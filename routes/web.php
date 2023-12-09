@@ -23,4 +23,8 @@ Route::post('/insertpegawai', [EmployeeController::class, 'insertpegawai']) ->na
 
 Route::get('/tampilkandata/{id} ', [EmployeeController::class,'tampilkandata']) ->name('tampilkandata');
 Route::post('/updatedata/{id} ', [EmployeeController::class,'updatedata']) ->name('updatedata');
+
 Route::get('/deletedata/{id} ', [EmployeeController::class,'deletedata']) ->name('deletedata');
+
+//export PDF
+Route::get('/exportpdf ', [EmployeeController::class,'exportpdf']) ->name('exportpdf');
