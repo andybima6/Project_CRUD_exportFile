@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use PDF;
 use App\Models\Employee;
+use App\Models\Religion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -18,6 +19,7 @@ class EmployeeController extends Controller
             Session::put('halaman_url',request()->fullUrl());
         }else{
             $data = Employee::paginate(5);
+            
             Session::put('halaman_url',request()->fullUrl());
         }
 
@@ -26,7 +28,8 @@ class EmployeeController extends Controller
 
     public function tambahpegawai()
     {
-        return view('tambahpegawai');
+        $dataagama = Religion::all();
+        return view('tambahpegawai',compact('dataagama'));
     }
     public function insertpegawai(Request $request)
     {

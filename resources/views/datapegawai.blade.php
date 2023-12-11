@@ -26,22 +26,22 @@
         </div>
 
         <div class="container">
-            <a href = "/tambahpegawai" type="button" class="btn btn-success mb-2">Tambah Data +</a>
+            <a href="/tambahpegawai" type="button" class="btn btn-success mb-2">Tambah Data +</a>
             {{-- {{ Session::get('halaman_url') }} --}}
 
             <div class="row g-3 align-items-center mt-2 mb-2">
                 <div class="col-auto">
                     <form action="/pegawai" method="GET">
-                        <input type = "search" id="inputPassword6" name="search" class="form-control"
+                        <input type="search" id="inputPassword6" name="search" class="form-control"
                             aria-describedby="passwordHelpInLine">
                     </form>
                 </div>
 
                 <div class="col-auto">
-                    <a href = "/exportpdf" type="button" class="btn btn-info mb-2">Export File +</a>
+                    <a href="/exportpdf" type="button" class="btn btn-info mb-2">Export File +</a>
                 </div>
-
             </div>
+
             <div class="row">
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success" role="alert">
@@ -56,6 +56,8 @@
                             <th scope="col">Foto</th>
                             <th scope="col">Jenis Kelamin</th>
                             <th scope="col">No Telpon</th>
+                            <th scope="col">Tanggal Lahir</th>
+                            <th scope="col">Agama</th>
                             <th scope="col">Dibuat</th>
                             <th scope="col">Aksi</th>
                         </tr>
@@ -69,21 +71,20 @@
                                 <th scope="row">{{ $index + $data->firstItem() }}</th>
                                 <td>{{ $row->nama }}</td>
                                 <td>
-                                    <img src="{{ asset('fotopegawai/' . $row->foto) }}" alt=""
-                                        style = "width:40px;">
+                                    <img src="{{ asset('fotopegawai/' . $row->foto) }}" alt="" style="width: 40px;">
                                 </td>
                                 <td>{{ $row->jeniskelamin }}</td>
                                 <td>{{ $row->notelpon }}</td>
+                                <td>{{ $row->tanggal_lahir }}</td>
+                                <td>{{ $row->religion->nama }}</td>
                                 <td>{{ $row->created_at->format('D M Y') }}</td>
                                 <td>
-                                    <a href = "/tampilkandata/{{ $row->id }}" class="btn btn-info">Edit</a>
-                                    <a href = "#"type="button" class="btn btn-danger delete"
-                                        data-id="{{ $row->id }}" data-nama="{{ $row->nama }}">Delete</a>
+                                    <a href="/tampilkandata/{{ $row->id }}" class="btn btn-info">Edit</a>
+                                    <a href="#" type="button" class="btn btn-danger delete" data-id="{{ $row->id }}"
+                                        data-nama="{{ $row->nama }}">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
-
-
                     </tbody>
                 </table>
                 {{ $data->links() }}
@@ -98,18 +99,17 @@
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 
     <!-- Custom JavaScript -->
     <script>
-        $(document).ready(function() {
-            $('.delete').click(function() {
+        $(document).ready(function () {
+            $('.delete').click(function () {
                 var pegawaiid = $(this).data('id');
                 var nama = $(this).data('nama');
                 swal({

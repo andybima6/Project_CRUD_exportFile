@@ -4,6 +4,7 @@ use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ReligionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,3 +44,11 @@ Route::get('/register ', [LoginController::class,'register']) ->name('register')
 Route::post('/registeruser ', [LoginController::class,'registeruser']) ->name('registeruser');
 
 Route::get('/logout ', [LoginController::class,'logout']) ->name('logout');
+
+
+Route::get('/datareligion', [ReligionController::class, 'index']) ->name('datareligion')->middleware('auth');
+Route::get('/tambahagama', [ReligionController::class, 'create']) ->name('tambahagama');
+
+Route::post('/insertpegawaireligion', [ReligionController::class, 'store']) ->name('insertpegawaireligion');
+
+

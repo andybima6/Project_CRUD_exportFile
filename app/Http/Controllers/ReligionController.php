@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Religion;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ReligionController extends Controller
 {
@@ -13,6 +14,8 @@ class ReligionController extends Controller
     public function index()
     {
         //
+        $data = Religion::paginate(5);
+        return view('datareligion',compact('data'));
     }
 
     /**
@@ -21,6 +24,7 @@ class ReligionController extends Controller
     public function create()
     {
         //
+        return view('tambahreligion');
     }
 
     /**
@@ -29,6 +33,8 @@ class ReligionController extends Controller
     public function store(Request $request)
     {
         //
+        $data = Religion::create($request->all());
+        return Redirect()->route('datareligion');
     }
 
     /**
