@@ -1,5 +1,10 @@
 @extends('layout.admin')
 
+@push('css')
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+@endpush
 
 @section('content')
     <div class="content-wrapper">
@@ -8,12 +13,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard v2</h1>
+                        <h1 class="m-0">Data Pegawai PT Andy</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v2</li>
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">Data Pegawai</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -22,6 +27,7 @@
 
         <div class="container">
             <a href = "/tambahpegawai" type="button" class="btn btn-success mb-2">Tambah Data +</a>
+            {{-- {{ Session::get('halaman_url') }} --}}
 
             <div class="row g-3 align-items-center mt-2 mb-2">
                 <div class="col-auto">
@@ -84,7 +90,10 @@
             </div>
         </div>
     </div>
-     <!-- Optional JavaScript -->
+@endsection
+
+@push('scripts')
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
@@ -123,4 +132,4 @@
             });
         });
     </script>
-@endsection
+@endpush

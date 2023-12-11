@@ -1,21 +1,12 @@
-<!doctype html>
-<html lang="en">
+@extends('layout.admin')
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Project_CRUD</title>
-</head>
-
+@section('content')
 <body>
-    <h1 class="text-center mb-4">Tambah Data Pegawai</h1>
-    <div class="container">
+    <br>
+    <br>
+    <h1 class="text-center mb-5 mt-5">Tambah Data Pegawai</h1>
+    <div class="container mb-5">
         <div class="row justify-content-center">
             <div class="col-8">
 
@@ -27,6 +18,11 @@
                                 <label for="exampleInputEmail1">Nama Lengkap</label>
                                 <input type="test" name = "nama" class="form-control">
                             </div>
+
+                            @error('nama')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Jenis Kelamin</label>
                                 <select name = "jeniskelamin" class="custom-select">
@@ -39,6 +35,11 @@
                                 <label for="exampleInputEmail1">No Telpon</label>
                                 <input name = "notelpon" type="number" class="form-control">
                             </div>
+
+                            @error('notelpon')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+
                             <div class="form-group mb-4">
                                 <label for="exampleInputEmail1">Masukkan Foto</label>
                                 <input type="file" name = "foto" class="form-control">
@@ -65,4 +66,4 @@
     </script>
 </body>
 
-</html>
+@endsection
